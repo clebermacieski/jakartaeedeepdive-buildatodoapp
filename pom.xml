@@ -5,7 +5,7 @@
     <groupId>br.codes.clebermacieski</groupId>
     <artifactId>jakartaeedeepdive-buildatodoapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+	<packaging>war</packaging>
 
     <name>jakartaeedeepdive-buildatodoapp</name>
     
@@ -21,6 +21,13 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+		<!-- Embedded Jakarta EE runtime -->
+<!--		<dependency>-->
+<!--			<groupId>fish.payara.extras</groupId>-->
+<!--			<artifactId>payara-micro</artifactId>-->
+<!--			<version>5.2021.10</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
     </dependencies>
     
     <build>
@@ -39,6 +46,28 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+			<!-- Execute 'mvn clean package payara-micro:start' to run the application. -->
+<!--			<plugin>-->
+<!--				<groupId>fish.payara.maven.plugins</groupId>-->
+<!--				<artifactId>payara-micro-maven-plugin</artifactId>-->
+<!--				<version>1.4.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>start</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<artifactItem>-->
+<!--						<groupId>fish.payara.extras</groupId>-->
+<!--						<artifactId>payara-micro</artifactId>-->
+<!--						<version>5.2021.10</version>-->
+<!--					</artifactItem>-->
+<!--					<deployWar>true</deployWar>-->
+<!--					<contextRoot>/</contextRoot>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
         </plugins>
     </build>
 </project>
