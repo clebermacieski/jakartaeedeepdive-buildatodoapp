@@ -10,8 +10,9 @@
     <name>jakartaeedeepdive-buildatodoapp</name>
     
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
     
     <dependencies>
@@ -46,7 +47,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-			<!-- Execute 'mvn clean package payara-micro:start' to run the application. -->
+<!--			 Execute 'mvn clean package payara-micro:start' to run the application. -->
 <!--			<plugin>-->
 <!--				<groupId>fish.payara.maven.plugins</groupId>-->
 <!--				<artifactId>payara-micro-maven-plugin</artifactId>-->

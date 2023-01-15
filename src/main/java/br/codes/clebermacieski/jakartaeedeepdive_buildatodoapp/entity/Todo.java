@@ -16,10 +16,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@NamedQuery(name = Todo.FIND_ALL_TODOS_BY_EMAIL, query = "SELECT Todo FROM Todo WHERE Todo.todoOwner.email = :email")
+@NamedQuery(name = Todo.FIND_ALL_TODOS_BY_ONWER_EMAIL, query = "select todo from Todo  todo where todo.todoOwner.email = :email")
 public class Todo extends AbstractEntity {
 
-	public static final String FIND_ALL_TODOS_BY_EMAIL = "FIND_ALL_TODOS";
+	public static final String FIND_ALL_TODOS_BY_ONWER_EMAIL = "Todo.findAllByEmail";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

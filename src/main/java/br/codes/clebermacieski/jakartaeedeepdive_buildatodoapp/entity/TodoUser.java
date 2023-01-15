@@ -12,16 +12,16 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@NamedQuery(name = TodoUser.FIND_TODO_USER_BY_EMAIL, query = "SELECT todoUser FROM TodoUser WHERE email = :email")
-@NamedQuery(name = TodoUser.FIND_ALL_TODO_USERS, query = "SELECT todoUser FROM TodoUser ORDER BY fullName")
-@NamedQuery(name = TodoUser.FIND_TODO_USER_BY_ID, query = "SELECT todoUser FROM TodoUser WHERE id = :id")
-@NamedQuery(name = TodoUser.FIND_TODO_USER_BY_NAME, query = "SELECT todoUser FROM TodoUser WHERE fullName LIKE :name")
-public class TodoUser extends AbstractEntity {
+@NamedQuery(name =TodoUser.FIND_TODO_USER_BY_EMAIL, query = "select tU from TodoUser  tU where tU.email = :email")
 
-	public static final String FIND_TODO_USER_BY_EMAIL = "TODO_USER_BY_EMAIL";
-	public static final String FIND_ALL_TODO_USERS = "FIND_ALL_TODO_USERS";
-	public static final String FIND_TODO_USER_BY_ID = "FIND_TODO_USER_BY_ID";
-	public static final String FIND_TODO_USER_BY_NAME = "FIND_TODO_USER_BY_NAME";
+@NamedQuery(name = TodoUser.FIND_ALL_TODO_USERS, query = "select todoUser from TodoUser  todoUser order by todoUser.fullName") //select * from TodoUserTable...
+@NamedQuery(name = TodoUser.FIND_TODO_USER_BY_ID, query = "select t from TodoUser t where t.todouser_id = :todouser_id and t.email = :email")
+@NamedQuery(name = TodoUser.FIND_TODO_BY_NAME, query = "select t from TodoUser t where t.fullName like :name ")public class TodoUser extends AbstractEntity {
+
+    public static final String FIND_TODO_USER_BY_EMAIL = "TodoUser.findByEmail";
+    public static final String FIND_ALL_TODO_USERS = "TodoUser.findAll";
+    public static final String FIND_TODO_USER_BY_ID = "TodoUser.findByIdAndEmail";
+    public static final String FIND_TODO_BY_NAME = "TodoUser.findByName";
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long todouser_id;
