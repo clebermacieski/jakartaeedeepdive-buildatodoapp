@@ -8,47 +8,71 @@ import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 
 @Stateless
 public class QueryService {
 
-    @PersistenceContext
-    EntityManager entityManager;
+	@PersistenceContext
+	EntityManager entityManager;
 
-    @Inject
-    private Session mySession;
+	@Inject
+	private Session mySession;
 
-    public TodoUser findTodoUserByEmail(String email) {
+	public TodoUser findTodoUserByEmail(String email) {
 
-        return entityManager.createNamedQuery(TodoUser.FIND_TODO_USER_BY_EMAIL, TodoUser.class)
-                .setParameter("email", email).getSingleResult();
+		try {
+			return entityManager.createNamedQuery(TodoUser.FIND_TODO_USER_BY_EMAIL, TodoUser.class)
+					.setParameter("email", email).getSingleResult();
+		} catch (NonUniqueResultException | NoResultException e) {
+			return null;
+		}
+	}
 
+	public List<TodoUser> findAllTodoUsers() {
 
-    }
+		return entityManager.createNamedQuery(TodoUser.FIND_ALL_TODO_USERS, TodoUser.class).getResultList();
+	}
 
-    public List<TodoUser> findAllTodoUsers() {
+	public TodoUser findTodoUserById(Long id) {
 
-        return entityManager.createNamedQuery(TodoUser.FIND_ALL_TODO_USERS, TodoUser.class).getResultList();
-    }
+		try {
+			return entityManager.createNamedQuery(TodoUser.FIND_TODO_USER_BY_ID, TodoUser.class).setParameter("id", id)
+					.setParameter("email", mySession.getEmail()).getSingleResult();
+		} catch (NonUniqueResultException | NoResultException e) {
+			return null;
+		}
+	}
 
+	public Collection<TodoUser> findTodoUsersByName(String name) {
 
-    public TodoUser findTodoUserById(Long id) {
+		return entityManager.createNamedQuery(TodoUser.FIND_TODO_BY_NAME, TodoUser.class)
+				.setParameter("name", "%" + name + "%").getResultList();
+	}
 
-        return entityManager.createNamedQuery(TodoUser.FIND_TODO_USER_BY_ID, TodoUser.class)
-                .setParameter("id", id).setParameter("email", mySession.getEmail()).getSingleResult();
-    }
+	public Collection<Todo> findAllTodos(String email) {
+		return entityManager.createNamedQuery(Todo.FIND_ALL_TODOS_BY_ONWER_EMAIL, Todo.class)
+				.setParameter("email", email).getResultList();
+	}
 
-    public Collection<TodoUser> findTodoUsersByName(String name) {
+	public List countTodoUserByEmail(String email) {
+		List resultList = entityManager.createNativeQuery(
+				"select count (todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where email = ?)")
+				.setParameter(1, email).getResultList();
 
-        return entityManager.createNamedQuery(TodoUser.FIND_TODO_BY_NAME, TodoUser.class)
-                .setParameter("name", "%" + name + "%").getResultList(); //jo
-    }
+		return resultList;
+	}
 
-
-    public Collection<Todo> findAllTodos(String email) {
-        return entityManager.createNamedQuery(Todo.FIND_ALL_TODOS_BY_ONWER_EMAIL, Todo.class)
-                .setParameter("email", email).getResultList();
-    }
+	public List countTodoUserByIdEmail(Long id, String email) {
+		return entityManager.createNativeQuery(
+				"select count (todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where todouser_id = ?1 and email = ?2)")
+				.setParameter(1, id).setParameter(2, email).getResultList();
+	}
+	
+	public TodoUser findTodoUser(Long todouser_id) {
+		return entityManager.find(TodoUser.class, todouser_id);
+	}
 
 }
