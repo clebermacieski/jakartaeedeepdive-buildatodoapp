@@ -1,0 +1,13 @@
+<tomee>
+    <Resource id="MySQL Database" type="DataSource">
+        # MySQL example
+        #
+        # This connector will not work until you download the driver at:
+        # http://www.mysql.com/downloads/api-jdbc-stable.html
+
+        JdbcDriver com.mysql.cj.jdbc.Driver
+        JdbcUrl jdbc:mysql://localhost/jakartaeedeepdive_buildatodoapp
+        UserName root
+        Password root
+    </Resource>
+</tomee>
