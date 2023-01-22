@@ -10,9 +10,6 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-@DataSourceDefinition(name = "java:app/Todo/MyDS"
-, className = "org.sqlite.SQLiteDataSource"
-, url = "jdbc:sqlite:F:/sqlite/sqlite-tools-win32-x86-3400100/todo.db")
 @Stateless
 public class PersistenceService {
 

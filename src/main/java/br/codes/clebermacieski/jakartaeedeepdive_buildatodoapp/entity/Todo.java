@@ -20,10 +20,10 @@ import jakarta.validation.constraints.Size;
 public class Todo extends AbstractEntity {
 
 	public static final String FIND_ALL_TODOS_BY_ONWER_EMAIL = "Todo.findAllByEmail";
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long todo_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long todo_id;
 
 	@NotEmpty(message = "Não pode ser vazio.")
 	@Size(min = 3, max = 140, message = "Minmo 3, máximo 140.")
@@ -36,9 +36,9 @@ public class Todo extends AbstractEntity {
 	@JsonbDateFormat(value = "DD-MM-YYY")
 	private LocalDate dueDate;
 	
-	private boolean completed;
-	private boolean archived;
-	private boolean remind;
+	private int completed;
+	private int archived;
+	private int remind;
 
 	@ManyToOne
 	@JoinColumn(name = "todouser_id")
@@ -48,7 +48,7 @@ public class Todo extends AbstractEntity {
 		return todo_id;
 	}
 
-	public void setTodo_id(long todo_id) {
+	public void setTodo_id(Long todo_id) {
 		this.todo_id = todo_id;
 	}
 
@@ -76,27 +76,27 @@ public class Todo extends AbstractEntity {
 		this.dueDate = dueDate;
 	}
 
-	public boolean isCompleted() {
+	public int isCompleted() {
 		return completed;
 	}
 
-	public void setCompleted(boolean completed) {
+	public void setCompleted(int completed) {
 		this.completed = completed;
 	}
 
-	public boolean isArchived() {
+	public int isArchived() {
 		return archived;
 	}
 
-	public void setArchived(boolean archived) {
+	public void setArchived(int archived) {
 		this.archived = archived;
 	}
 
-	public boolean isRemind() {
+	public int isRemind() {
 		return remind;
 	}
 
-	public void setRemind(boolean remind) {
+	public void setRemind(int remind) {
 		this.remind = remind;
 	}
 
