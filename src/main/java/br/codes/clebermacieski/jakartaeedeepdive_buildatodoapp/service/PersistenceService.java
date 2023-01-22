@@ -25,7 +25,7 @@ public class PersistenceService {
 	public TodoUser saveTodoUser(TodoUser todoUser) {
 
 		List list = queryService.countTodoUserByEmail(todoUser.getEmail());
-		Integer count = (Integer) list.get(0);
+		Long count = (Long) list.get(0);
 
 		if (todoUser.getTodouser_id() == null && count == 0) {
 			entityManager.persist(todoUser);
@@ -49,7 +49,7 @@ public class PersistenceService {
 	public TodoUser updateTodoUserEmail(Long id, String email) {
 		List list = queryService.countTodoUserByEmail(email);
 		Integer count = (Integer) list.get(0);
-		
+
 		if(count != 0) {
 			TodoUser todoUser = queryService.findTodoUser(id);
 			if(todoUser != null) {
