@@ -12,12 +12,17 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
  ********************************************************************************/
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.resources;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
+public class Hello {
 
-@ApplicationPath("")
-public class ApplicationConfig extends Application {
-    
+    private final String text;
+
+    public Hello(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
 }

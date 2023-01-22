@@ -12,17 +12,19 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
  ********************************************************************************/
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.resources;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.resources;
 
-public class Hello {
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 
-    private final String text;
-
-    public Hello(String text) {
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
+@Path("hello")
+public class RestResource {
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Hello hello(){
+        return new Hello("Hello from Jakarta EE");
     }
 }

@@ -1,4 +1,4 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity;
 
 import java.io.Serializable;
 import java.time.LocalTime;

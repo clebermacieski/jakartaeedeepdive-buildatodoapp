@@ -1,4 +1,4 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
 
 import java.io.Serializable;
 

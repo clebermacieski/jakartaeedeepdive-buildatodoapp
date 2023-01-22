@@ -1,9 +1,9 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
 
 import java.util.List;
 
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.Todo;
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.Todo;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -37,7 +37,7 @@ public class PersistenceService {
 	public TodoUser updateTodoUser(TodoUser todoUser) {
 
 		List list = queryService.countTodoUserByIdEmail(todoUser.getTodouser_id(), todoUser.getEmail());
-		Integer count = (Integer) list.get(0);
+		Long count = (Long) list.get(0);
 
 		if (todoUser.getTodouser_id() != null && count == 1) {
 			entityManager.merge(todoUser);
@@ -48,7 +48,7 @@ public class PersistenceService {
 	
 	public TodoUser updateTodoUserEmail(Long id, String email) {
 		List list = queryService.countTodoUserByEmail(email);
-		Integer count = (Integer) list.get(0);
+		Long count = (Long) list.get(0);
 
 		if(count != 0) {
 			TodoUser todoUser = queryService.findTodoUser(id);

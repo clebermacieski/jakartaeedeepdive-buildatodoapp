@@ -1,10 +1,10 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service;
 
 import java.util.Collection;
 import java.util.List;
 
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.Todo;
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.Todo;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;

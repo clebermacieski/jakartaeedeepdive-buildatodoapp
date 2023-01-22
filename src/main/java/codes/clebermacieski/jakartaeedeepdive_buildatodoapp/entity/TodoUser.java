@@ -1,4 +1,4 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ public class TodoUser extends AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long todouser_id;
 
-	@Column(length = 100)
+	@Column(length = 100, unique = true)
 	@NotEmpty(message = "Não pode ser vazio.")
 	@Email(message = "algo@algo.")
 	private String email;

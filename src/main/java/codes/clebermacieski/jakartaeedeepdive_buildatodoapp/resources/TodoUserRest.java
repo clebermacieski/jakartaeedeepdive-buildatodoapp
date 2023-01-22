@@ -1,8 +1,8 @@
-package br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.resources;
+package codes.clebermacieski.jakartaeedeepdive_buildatodoapp.resources;
 
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service.PersistenceService;
-import br.codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service.QueryService;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.entity.TodoUser;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service.PersistenceService;
+import codes.clebermacieski.jakartaeedeepdive_buildatodoapp.service.QueryService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
