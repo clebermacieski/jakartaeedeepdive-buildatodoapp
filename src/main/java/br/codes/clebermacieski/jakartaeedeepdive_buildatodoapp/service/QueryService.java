@@ -59,7 +59,7 @@ public class QueryService {
 
 	public List countTodoUserByEmail(String email) {
 		List resultList = entityManager.createNativeQuery(
-				"select count (todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where email = ?)")
+				"select count(todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where email = ?)")
 				.setParameter(1, email).getResultList();
 
 		return resultList;
@@ -67,7 +67,7 @@ public class QueryService {
 
 	public List countTodoUserByIdEmail(Long id, String email) {
 		return entityManager.createNativeQuery(
-				"select count (todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where todouser_id = ?1 and email = ?2)")
+				"select count(todouser_id) from TodoUser where  exists (select todouser_id from TodoUser where todouser_id = ?1 and email = ?2)")
 				.setParameter(1, id).setParameter(2, email).getResultList();
 	}
 	
