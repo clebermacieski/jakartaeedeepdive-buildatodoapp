@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@NamedQuery(name = Todo.FIND_ALL_TODOS_BY_ONWER_EMAIL, query = "select todo from Todo  todo where todo.todoOwner.email = :email")
+@NamedQuery(name = Todo.FIND_ALL_TODOS_BY_ONWER_EMAIL, query = "SELECT todo FROM Todo  todo WHERE todo.todoOwner.email = :email")
 public class Todo extends AbstractEntity {
 
 	public static final String FIND_ALL_TODOS_BY_ONWER_EMAIL = "Todo.findAllByEmail";
@@ -33,7 +33,7 @@ public class Todo extends AbstractEntity {
 	
 	@NotNull(message = "Deve ser no presente ou futuro.")
 	@FutureOrPresent(message = "Tem que ser no presente ou futuro.")
-	@JsonbDateFormat(value = "DD-MM-YYY")
+	@JsonbDateFormat(value = "DD-MM-YYYY")
 	private LocalDate dueDate;
 	
 	private int completed;
@@ -80,8 +80,8 @@ public class Todo extends AbstractEntity {
 		return completed;
 	}
 
-	public void setCompleted(int completed) {
-		this.completed = completed;
+	public void setCompleted(int i) {
+		this.completed = i;
 	}
 
 	public int isArchived() {
