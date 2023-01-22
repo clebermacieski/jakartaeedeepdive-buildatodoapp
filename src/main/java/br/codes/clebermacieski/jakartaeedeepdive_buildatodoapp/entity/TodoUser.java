@@ -24,8 +24,8 @@ public class TodoUser extends AbstractEntity {
 	public static final String FIND_TODO_BY_NAME = "TodoUser.findByName";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long todouser_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long todouser_id;
 
 	@Column(length = 100)
 	@NotEmpty(message = "Não pode ser vazio.")
@@ -52,7 +52,7 @@ public class TodoUser extends AbstractEntity {
 		return todouser_id;
 	}
 
-	public void setTodouser_id(long todouser_id) {
+	public void setTodouser_id(Long todouser_id) {
 		this.todouser_id = todouser_id;
 	}
 

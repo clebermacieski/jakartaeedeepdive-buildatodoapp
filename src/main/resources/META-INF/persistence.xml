@@ -6,9 +6,18 @@
  https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 	<persistence-unit name="todo-app-persistence-unit"
 		transaction-type="JTA">
-		<jta-data-source>java:app/Todo/MyDS</jta-data-source>
+		<jta-data-source>todo-app-data-source</jta-data-source>
+		<non-jta-data-source>todo-app-data-source-unmanaged</non-jta-data-source>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
+			<property name="jakarta.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="eclipselink.target-database" value="MySQL" />
+			<property name="jakarta.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/jakartaeedeepdive_buildatodoapp ;create=true" />
+			<property name="jakarta.persistence.jdbc.user" value="root" />
+			<property name="jakarta.persistence.jdbc.password"
+				value="root" />
 			<property
 				name="jakarta.persistence.schema-generation.database.action"
 				value="drop-and-create" />
