@@ -69,12 +69,14 @@ public class TodoUserRest {
 
 	@GET
 	@Path("count")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response countToUserByEmail(@QueryParam("email") @NotNull String email) {
 		return Response.ok(queryService.countTodoUserByEmail(email)).build();
 	}
 
 	@GET
 	@Path("list")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response listAllTodoUsers() {
 		return Response.ok(queryService.findAllTodoUsers()).build();
 	}
